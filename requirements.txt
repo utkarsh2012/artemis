@@ -1,0 +1,5 @@
+celery
+celery-with-redis
+flask
+requests
+markdown
