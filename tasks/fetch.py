@@ -38,10 +38,10 @@ def _get_metrics(url):
     return data
 
 
-def _write_to_db(x):
+def _write_to_db(data):
     try:
-        f = open("fetched_data.txt", "a+")
-        f.write(str(x))
+        f = open("metrics_data.txt", "a+")
+        f.write(str(data))
     finally:
         f.close()
 
