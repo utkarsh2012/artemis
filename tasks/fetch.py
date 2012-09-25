@@ -6,9 +6,9 @@ import settings
 from celery import Celery
 from utils import IsNotNull
 
-celery = Celery('tasks', broker=settings.BROKER_URL)
+celery = Celery('tasks.fetch', broker=settings.BROKER_URL)
 
-@celery.task
+@celery.task(name='tasks.fetch.perform_collection')
 def perform_collection(list_of_nodes, url_pattern):
         logging.debug(" ---------> Worker starting to process: %d nodes" %len(list_of_nodes))
         for node in list_of_nodes:

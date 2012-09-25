@@ -2,7 +2,7 @@
 
 import unittest
 import requests
-from tasks import _construct_url, _get_metrics
+from fetch import _construct_url, _get_metrics
 
 
 class TestArtemisTasks(unittest.TestCase):
