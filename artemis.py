@@ -20,7 +20,7 @@ Home of the app, for now renders the markdown README file as html
 """
 @app.route('/')
 def index():
-    f = open("README.md5", "r")
+    f = open("README.md", "r")
     html = markdown.markdown(f.read())
     f.close()
     return html
