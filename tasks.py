@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from celery import Celery
 import logging
 import requests
-from utils import IsNotNull
 import settings
+from celery import Celery
+from utils import IsNotNull
 
 celery = Celery('tasks', broker=settings.BROKER_URL)
 
@@ -40,7 +40,7 @@ def _get_metrics(url):
 
 def _write_to_db(x):
     try:
-        f = open("fetched_data.txt", "w")
+        f = open("fetched_data.txt", "a+")
         f.write(str(x))
     finally:
         f.close()

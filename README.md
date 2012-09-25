@@ -8,6 +8,8 @@ A web app to fetch metrics via REST endpoints based on celery's distributed task
     1. [Flask][1] to run the web app
     2. [Celery][2] with [redis][3] as message broker
     	* Alternative: In place of celery, python's [multiprocessing][4] can be used for parallelism. But I chose clerey for clear separation of web app and task workers.
+    	Why celery? Because the message passing will further enable to distribute load to multiple machines compared to mutiprocessing which will give parallelism on a single machine.
+    	            Production quality
 
 1. ###Installation:
     1. pip install -r requirements.txt
@@ -30,7 +32,7 @@ A web app to fetch metrics via REST endpoints based on celery's distributed task
         url pattern should be 1 which can be applied to all the nodes
         url=metric
 
-3. ###How does it work:
+4. ###How does it work:
      1. POST request is received and a task will be added to celery queue and all processing is asynchronous now.
      2. artemis will construct the metrics endpoint by concatenating the 2 inputs:
      	1. http://localhost:5000/metric
@@ -38,6 +40,10 @@ A web app to fetch metrics via REST endpoints based on celery's distributed task
      3. Celery task will get the JSON data from /metric (using requests.get)
      4. Write JSON to a flat file for now (this can be changed to be written to a DB)
 
+
+5. ###Enhacements:
+     1. Error handling and retries is needed to be implemented
+     2. Simple benchmarking to measure total nodes 8 celery processes and 1 instance of redis can handle.
 
 
 [1]: http://flask.pocoo.org/

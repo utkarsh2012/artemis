@@ -36,11 +36,13 @@ def fetch():
         url_pattern=request.form['url']
         if list_of_nodes and url_pattern:
             perform_collection.delay(list_of_nodes, url_pattern)
-            return jsonify(success="Request is being processed")
+            result = jsonify(success="Request is being processed")
         else:
-            return jsonify(error="Invalid request")
+            result = jsonify(error="Invalid request")
     else:
-        return jsonify(error='Please try a POST request with: 1. List of nodes (eg: nodes=machine1.foo.com, machine2.foo.com), 2. URL Pattern of the endpoint (eg: url=metric)')
+        result = jsonify(error='Please try a POST request with: 1. List of nodes (eg: nodes=machine1.foo.com, machine2.foo.com), 2. URL Pattern of the endpoint (eg: url=metric)')
+
+    return result
 
 
 """
