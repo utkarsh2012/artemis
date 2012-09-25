@@ -1,7 +1,7 @@
 Artemis
 ===
-A web app to fetch metrics via REST endpoints based on celery's distributed task queue.
-
+A web app to fetch metrics via REST endpoints based on celery's distributed task queue.  
+Why Artemis? She was a greek godess for hunting. This app hunts for metrics across a cluster of nodes.
 
 
 0. ###Design consideration:
@@ -18,7 +18,7 @@ A web app to fetch metrics via REST endpoints based on celery's distributed task
 2. ###Running the app:
     1. Flask web app: python artemis.py runserver
     2. Start redis: ./src/redis-server
-    3. Start Celery: celery -A tasks worker --loglevel=debug
+    3. Start Celery (from artemis/tasks): celery -A fetch worker --loglevel=debug
     4. Start accepting requests (via POST request)!
 
         Example: curl -d "node=localhost:5000&node=127.0.0.1:5000&url=metric" http://localhost:5000/fetch

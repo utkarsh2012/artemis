@@ -10,7 +10,7 @@ __author__ = 'Utkarsh Sengar'
 """
 
 from flask import Flask, request, jsonify
-from tasks import perform_collection
+from tasks.fetch import perform_collection
 import markdown
 
 app = Flask(__name__)
