@@ -20,6 +20,7 @@ A web app to fetch metrics via REST endpoints based on celery's distributed task
     2. Start redis: ./src/redis-server
     3. Start Celery: celery -A tasks worker --loglevel=debug
     4. Start accepting requests (via POST request)!
+
         Example: curl -d "node=localhost:5000&node=127.0.0.1:5000&url=metric" http://localhost:5000/fetch
 
 
@@ -44,6 +45,11 @@ A web app to fetch metrics via REST endpoints based on celery's distributed task
 5. ###Enhacements:
      1. Error handling and retries is needed to be implemented
      2. Simple benchmarking to measure total nodes 8 celery processes and 1 instance of redis can handle.
+
+
+
+6. ###Screenshot:
+![redis, celery and flask](http://i.imgur.com/wiJXA.png)
 
 
 [1]: http://flask.pocoo.org/
